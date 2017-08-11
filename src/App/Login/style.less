@@ -1,0 +1,32 @@
+.login {
+    background: #222630;
+    height: 100vh;
+    display: flex;
+    justify-content:center;
+    align-items:Center;
+
+    .main {
+        width: 52%;
+        max-width: 760px;
+        min-width: 300px;
+        border-radius: 8px;
+        padding:60px 0 95px 0;
+        background-image:-webkit-linear-gradient(to top right, #384152, #36585f);
+		background-image:linear-gradient(to top right,#384152,#36585f);
+        text-align: center;
+
+        .logo img {width: 140px}
+        ul {width: 280px;margin: 0 auto;}
+        li {display: flex;position: relative; margin-top: 20px;font-size: 16px}
+        li div {flex: 1; line-height: 38px;text-align: left;}
+        li div:first-child {max-width: 25px}
+        li i {color: #23D974;}
+        .input::before {content: '';position: absolute;width: 160%;height: 1px;border-bottom: 1px solid rgba(255,255,255,.1);-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scale(.5,.5);transform: scale(.5,.5);-webkit-box-sizing: border-box;box-sizing: border-box;bottom: 0;left: 30px;}
+        .ant-input::-webkit-input-placeholder {color: rgba(255,255,255,.2);}
+        .ant-input {border:none; background: transparent; border-radius: 0; color: rgba(255,255,255,.2);}
+        .ant-input:focus {box-shadow: none}
+        button {margin-top: 20px;width: 100%; height: 48px;background: #23D974;border: none}
+        li.loginError {font-size: 14px; color: #f00;text-align: center; display: inline-block;}
+    }
+
+}
