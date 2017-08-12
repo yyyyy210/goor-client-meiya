@@ -13,7 +13,7 @@ function List({ data, loading, onDelete }) {
 
     // table配置
   const columns = [
-    { title: '机器人', dataIndex: 'deviceId' },
+    { title: '机器人编号', dataIndex: 'deviceId' },
     { title: '场景名称', dataIndex: 'sceneName' },
     { title: '文件存放路径', dataIndex: 'robotPath' },
     { title: '创建时间', dataIndex: 'createTime' },

@@ -6,7 +6,7 @@ function List({ data, loading }) {
 
     // table配置
     const columns = [
-        { title: '机器人', dataIndex: 'deviceId'},
+        { title: '机器人编号', dataIndex: 'deviceId'},
         { title: '警告级别', dataIndex: 'logLevel'},
         {
             title: '日志', dataIndex: 'message', render: (text, record) => {

@@ -35,15 +35,6 @@ function SceneList({ datas, loading, dispatch }) {
             pointCascade.length === 0 && dispatch({ type: 'SceneList/pointCascade' });
             dispatch({ type: 'SceneList/VisibleEdit', payload: { Visible: 'edit', item: res } });
         },
-        onDelete(res){
-            confirm({
-                iconType:'',
-                title: '确认删除此条信息？',
-                onOk () {
-                    dispatch({type: 'SceneList/delete',payload: res})
-                },
-            })
-        },
         // 更新
         sync(id){
             dispatch({ type: 'SceneList/sync', payload: {id} });

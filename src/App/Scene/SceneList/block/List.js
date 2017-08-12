@@ -3,7 +3,7 @@ import { Icon, Tooltip, Tag, Button, Popover } from 'antd'
 import { DataTable } from 'Components'
 import { UPDATE, DELETE } from 'Utils/options'
 
-function List({ data, loading, onEdit, onDelete, sync }) {
+function List({ data, loading, onEdit, sync }) {
     
     const sceneType = [
         { icon: '', name: '正在上传', loading: true, class: {} },
@@ -16,7 +16,6 @@ function List({ data, loading, onEdit, onDelete, sync }) {
     const handleMenuClick = (key, record) => {
         return {
             [UPDATE]: onEdit,
-            [DELETE]: onDelete
         }[key](record)
     }
 
@@ -67,7 +66,6 @@ function List({ data, loading, onEdit, onDelete, sync }) {
                 return (
                     <ul>
                         <li><Tooltip placement="top" title='编辑' onClick={() => handleMenuClick(UPDATE, record)}><Icon type="edit" /></Tooltip></li>
-                        <li><Tooltip placement="top" title='删除' onClick={() => handleMenuClick(DELETE, record)}><Icon type="delete" /></Tooltip></li>
                     </ul>
                 )
             }
@@ -82,7 +80,6 @@ function List({ data, loading, onEdit, onDelete, sync }) {
 List.propTypes = {
     data: PropTypes.object.isRequired,
     onEdit: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
     sync: PropTypes.func.isRequired,
 }
 

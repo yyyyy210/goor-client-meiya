@@ -20,13 +20,8 @@ function List({ data, loading, overDispatch }) {
 
 	// table配置
 	const columns = [
-		{ title: '任务名', dataIndex: 'name' },
-		{
-			title: '任务类型', dataIndex: 'missionListType', render: (text, record) => {
-				return <span>{missionType[text]}</span>
-			}
-		},
-		{ title: '执行机器', dataIndex: 'robotCode'},
+		{ title: '调度名称', dataIndex: 'name' },
+		{ title: '机器人编号', dataIndex: 'robotCode'},
 		{ title: '重复次数', dataIndex: 'repeatTimes' },
 		{
 			title: '当前次数', dataIndex: 'repeatTimesReal', render: (text, record) => {

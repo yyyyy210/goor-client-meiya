@@ -16,7 +16,7 @@ function List({ data, loading, onUpdata }) {
     { title: '地图名称', dataIndex: 'mapName' },
     { title: '地图别名', dataIndex: 'mapAlias' },
     { title: '地图楼层', dataIndex: 'floor' },
-    { title: '场景名称', dataIndex: 'sceneName' },
+    { title: '地图场景', dataIndex: 'sceneName' },
     { title: '文件存放路径', dataIndex: 'pngImageLocalPath' },
     { title: '设计图', dataIndex: 'pngDesigned' },
     { title: '操作',

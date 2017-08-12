@@ -151,12 +151,12 @@ class Edit extends React.Component {
 							initialValue: 0,
 						})(<IntervalTime />)}
 					</FormItem> */}
-					<FormItem label="选择机器人" {...formItemLayout}>
+					<FormItem label="机器人编号" {...formItemLayout}>
 						{getFieldDecorator('robotIds', {
 							//initialValue: 0,
-							rules: [{ required: true, message: '选择机器人未填写' }],
+							rules: [{ required: true, message: '选择机器人编号未填写' }],
 						})(
-							<Select placeholder="选择机器人" style={{width:180}}>
+							<Select placeholder="选择机器人编号" style={{width:180}}>
 								{
 									robots.map((text, index) => {
 										return (

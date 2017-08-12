@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 // import { browserHistory, routerRedux } from 'dva/router';
 import { routerRedux } from 'dva/router';
 import { connect } from 'dva';
-import { Select, Icon, Row, Col } from 'antd';
+import { Select, Icon, Row, Col, Button } from 'antd';
 import { Link } from 'dva/router'
 import { loginState } from 'Utils/config';
 import './style.less';
@@ -102,26 +102,33 @@ class SceneIndex extends React.Component {
         return (
             <div className="modelMain">
                 <div className="tabs">
-                    <Select value={this.state.stateDefaultID} style={{ width: 150 }} onChange={this.onChangeScene.bind(this)} notFoundContent="无可用场景">
-                        {
-                            this.state.stateOK.map((text, index) => {
-                                return (
-                                    <Option key={index} value={text.id}>{text.name}</Option>
-                                )
-                            })
-                        }
-                    </Select>
-                    <Link to='/scene/list' ><Icon type="area" /></Link>
+                    <Row>
+                        <Col span="12">
+                            <span>切换场景：</span>
+                            <Select value={this.state.stateDefaultID} style={{ width: 150 }} onChange={this.onChangeScene.bind(this)} notFoundContent="无可用场景">
+                                {
+                                    this.state.stateOK.map((text, index) => {
+                                        return (
+                                            <Option key={index} value={text.id}>{text.name}</Option>
+                                        )
+                                    })
+                                }
+                            </Select>
+                        </Col>
+                        <Col span="12" style={{textAlign:'right'}}>
+                            <Link to='/scene/list' ><Button type='aGreen'>场景列表</Button></Link>
+                        </Col>
+                    </Row>
                 </div>
                 <Row className="scencBlock">
-                    <Col className="scencLeft" span="5">
+                    <Col className="scencLeft" span="4">
                         <ul>
                             <li className={this.state.leftIndex === 'mission' && 'active'} onClick={() => this.scencLeftChange('mission')}><Icon type="station" /><span>任务管理</span></li>
                             <li className={this.state.leftIndex === 'dispatchPose' && 'active'} onClick={() => this.scencLeftChange('dispatchPose')}><Icon type="scheduling_Jobs" /><span>机器人调度</span></li>
                             <li className={this.state.leftIndex === 'monitor' && 'active'} onClick={() => this.scencLeftChange('monitor')}><Icon type="monitor" /><span>实时监测</span></li>
                         </ul>
                     </Col>
-                    <Col className="scencRight" span="19">
+                    <Col className="scencRight" span="20">
                         {
                             this.state.leftIndex === 'mission'
                             &&

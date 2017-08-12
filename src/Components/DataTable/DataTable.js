@@ -47,7 +47,7 @@ function DataTable({ dispatch, location, loading, columns, data, noAjax }) {
       scroll: { x: 1200 },
       onChange: onPageChange,
       rowKey: record => record.id,
-      pagination: { showTotal: total => `共 ${total} 条  每页显示 ${pageSize}条`, total, current: parseInt(pageNum) },
+      pagination: { showQuickJumper: true, showTotal: total => `共 ${total} 条  每页显示 ${pageSize}条`, total, current: parseInt(pageNum) },
 
     };
   }
