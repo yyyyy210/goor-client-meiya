@@ -28,9 +28,13 @@ function List({ data, loading, overDispatch }) {
 				return <span>{text > 0 ? text : 0}</span>
 			}
 		},
-		{ title: '间隔时间', dataIndex: 'intervalTime' },
-		{ title: '开始时间', dataIndex: 'startTime' },
-		{ title: '结束时间', dataIndex: 'stopTime' },
+		{ title: '间隔时间', dataIndex: 'intervalTime'},
+		{ title: '开始时间', dataIndex: 'startTime', render: (text, index) => {
+			return new Date(text*1000).format("HH:mm:ss");
+		}},
+		{ title: '结束时间', dataIndex: 'stopTime', render: (text, index) => {
+			return new Date(text*1000).format("HH:mm:ss");
+		}},
 		{ title: '创建时间', dataIndex: 'createTime' },
 		{
 			title: '状态', dataIndex: 'state', render: (text, record) => {
