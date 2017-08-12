@@ -41,7 +41,7 @@ function List({ data, loading, onEdit, sync }) {
                         <Button type={t.icon} style={t.class} onClick={() => { t.on(record.id)}}>{t.name}</Button>
                     );
                 }else if (t.icon === 'primary'){
-                    const mapSyncResult = record.mapSyncResult.split(',');
+                    const mapSyncResult = record.mapSyncResult ? record.mapSyncResult.split(',') : [];
                     let mapSyncResultArr = (
                         <div>
                             {mapSyncResult.map((t, index) => <p key={index}>{t}</p>)}

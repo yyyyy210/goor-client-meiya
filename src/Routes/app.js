@@ -20,8 +20,10 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-		const { dispatch } = this.props;
-		dispatch({ type: 'app/getAllEnum' })
+        const { dispatch, location } = this.props;
+        if(location.pathname !== '/login'){
+            dispatch({ type: 'app/getAllEnum' })
+        }
     }
 
     render() {
