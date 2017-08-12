@@ -125,7 +125,7 @@ class SceneIndex extends React.Component {
                         <ul>
                             <li className={this.state.leftIndex === 'mission' && 'active'} onClick={() => this.scencLeftChange('mission')}><Icon type="station" /><span>任务管理</span></li>
                             <li className={this.state.leftIndex === 'dispatchPose' && 'active'} onClick={() => this.scencLeftChange('dispatchPose')}><Icon type="scheduling_Jobs" /><span>机器人调度</span></li>
-                            <li className={this.state.leftIndex === 'monitor' && 'active'} onClick={() => this.scencLeftChange('monitor')}><Icon type="monitor" /><span>实时监测</span></li>
+                            {/* <li className={this.state.leftIndex === 'monitor' && 'active'} onClick={() => this.scencLeftChange('monitor')}><Icon type="monitor" /><span>实时监测</span></li> */}
                         </ul>
                     </Col>
                     <Col className="scencRight" span="20">
@@ -139,11 +139,11 @@ class SceneIndex extends React.Component {
                             &&
                             <DispatchPose robots={datas.defaultScene} />
                         }
-                        {
+                        {/* {
                             (this.state.leftIndex === 'monitor' && datas.defaultScene.length > 0)
                             &&
                             <RealTimeControl robots={datas.defaultScene} />
-                        }
+                        } */}
                     </Col>
                 </Row>
             </div>
