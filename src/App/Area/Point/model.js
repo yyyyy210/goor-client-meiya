@@ -4,6 +4,8 @@ import { loginState } from 'Utils/config'
 
 const {mapPointType} = loginState.getUser('enums');
 
+let payload_ = {};
+
 export default {
   namespace: 'AreaPoint',
   state: {
@@ -23,12 +25,13 @@ export default {
   },
   effects: {
     *query({ payload}, { call, put }) {
+      payload_ = payload;
       const res = yield call(QUERY, payload);
       yield put({type: 'save',payload: {data:res.data}});
     },
     *post({ payload}, { call, put }) {
        const res = yield call(POST, payload);
-       yield put({type: 'query',payload: {}})
+       yield put({type: 'query',payload:payload_})
        yield put({type: 'VisibleEdit',payload: {Visible:'list'}});
     },
     *delete({ payload}, { call, put }) {

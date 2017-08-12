@@ -33,10 +33,10 @@ function List({ data, loading, onEdit, onDetail, robotType }) {
     },
     {
       title: '充电桩',
-      dataIndex: 'chargerMapPointList',
+      dataIndex: 'originChargerMapPointList',
       render: (text, record) => {
         return (<div>
-          {text.map((eachObject, index) => <Tag color="#ADB7D4" key={eachObject.id} >{eachObject.point_alias}</Tag>)}
+          {text && text.map((eachObject, index) => <Tag color="#ADB7D4" key={eachObject.id} >{eachObject.point_alias}</Tag>)}
         </div>);
       },
     },

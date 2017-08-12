@@ -17,18 +17,6 @@ function List({ data, loading, onDelete }) {
     { title: '场景名称', dataIndex: 'sceneName' },
     { title: '文件存放路径', dataIndex: 'robotPath' },
     { title: '创建时间', dataIndex: 'createTime' },
-    {
-      title: '操作',
-      key: 'operation',
-      render: (text, record) => {
-        return (
-          <ul>
-            <li><Tooltip placement="top" title="删除" onClick={() => handleMenuClick(DELETE, record)}><Icon type="delete" /></Tooltip></li>
-          </ul>
-        );
-      },
-    },
-
   ];
 
   return (

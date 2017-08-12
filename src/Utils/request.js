@@ -29,11 +29,11 @@ export default async function request(url, options = {}) {
 	const { token } = await loginState.getUser('userInfo') || '';
 
 	// 暂get带token
-	// if (url.indexOf('?') >= 0) {
-	// 	url += `&access_token=${token}`;
-	// } else {
-	// 	url != 'account/user/login' && (url += `?access_token=${token}`);
-	// }
+	if (url.indexOf('?') >= 0) {
+		url += `&access_token=${token}`;
+	} else {
+		url != 'account/user/login' && (url += `?access_token=${token}`);
+	}
 	options.credentials = 'include';
 	//带上token
 	// options.headers = {

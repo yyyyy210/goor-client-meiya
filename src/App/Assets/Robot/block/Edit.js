@@ -11,7 +11,7 @@ function Edit({ item, onOk, onCancel, robotType, pointCharger, form: { getFieldD
     validateFields((errors) => {
       if (errors) { return; }
       const res = getFieldsValue();
-      res.chargerMapPointList = [{ id: res.chargerMapPointList }];
+      res.originChargerMapPointList = [{ id: res.originChargerMapPointList }];
       onOk({
         ...res,
         id: item.id || '',
@@ -61,8 +61,8 @@ function Edit({ item, onOk, onCancel, robotType, pointCharger, form: { getFieldD
           })(<InputNumber min={0} max={100} />)}
         </FormItem>
         <FormItem label="充电桩设置" {...formItemLayout}>
-          {getFieldDecorator('chargerMapPointList', {
-            initialValue: item.chargerMapPointList.length > 0 ? item.chargerMapPointList[0].id : '',
+          {getFieldDecorator('originChargerMapPointList', {
+            initialValue: item.originChargerMapPointList.length > 0 ? item.originChargerMapPointList[0].id : '',
             rules: [{ required: true, message: '充电桩设置未填写' }],
           })(
             <RadioGroup>

@@ -4,11 +4,11 @@ import { DataTable } from 'Components'
 import { UPDATE, DELETE } from 'Utils/options'
 
 const sceneType = [
-        {icon:'primary',name:'正在上传',loading:true,class:{}},
-        {icon:'primary',name:'成功',loading:false,class:{}},
-        {icon:'danger',name:'失败',loading:false,class:{color:'#f00'}},
-        {icon:'danger',name:'更新',loading:false,class:{color:'#FF8C00',border:'#FF8C00 1px solid'}},
-    ];//0 1 2 3
+    { icon: '', name: '正在上传', loading: true, class: {} },
+    { icon: 'primary', name: '成功', loading: false, class: {} },
+    { icon: 'aRed', name: '失败', loading: false, class: {} },
+    { icon: 'danger', name: '更新', loading: false, class: { color: '#FF8C00', border: '#FF8C00 1px solid' } },
+];//0 1 2 3
 
 function List({ data, loading, onEdit, onDelete }) {
     //操作事件
@@ -36,7 +36,7 @@ function List({ data, loading, onEdit, onDelete }) {
             title: '状态', dataIndex: 'state',
             render: (text, record) => {
                 const t = sceneType[text]
-                return <Button  type={t.primary} style={t.class}>{t.name}</Button>;
+                return <Button type={t.icon} style={t.class}>{t.name}</Button>;
             }
         },
         {
