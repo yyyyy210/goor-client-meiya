@@ -19,7 +19,8 @@ function SceneList({ datas, loading, dispatch }) {
             onEditor() {
                 //robotlist.length === 0 && dispatch({ type: 'SceneList/robotlist' });
                 dispatch({ type: 'SceneList/robotlist' });
-                pointCascade.length === 0 && dispatch({ type: 'SceneList/pointCascade' });
+                // pointCascade.length === 0 && dispatch({ type: 'SceneList/pointCascade' });
+                dispatch({ type: 'SceneList/pointCascade' });
                 dispatch({ type: 'SceneList/VisibleEdit', payload: { Visible: 'edit', item: {} } });
             },
         },
@@ -32,7 +33,8 @@ function SceneList({ datas, loading, dispatch }) {
         onEdit(res) {
             //robotlist.length === 0 && dispatch({ type: 'SceneList/robotlist' });
             dispatch({ type: 'SceneList/robotlist' });
-            pointCascade.length === 0 && dispatch({ type: 'SceneList/pointCascade' });
+            // pointCascade.length === 0 && dispatch({ type: 'SceneList/pointCascade' });
+            dispatch({ type: 'SceneList/pointCascade' });
             dispatch({ type: 'SceneList/VisibleEdit', payload: { Visible: 'edit', item: res } });
         },
         // 更新
