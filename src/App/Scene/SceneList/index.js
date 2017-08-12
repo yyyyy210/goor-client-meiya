@@ -43,6 +43,14 @@ function SceneList({ datas, loading, dispatch }) {
                     dispatch({type: 'SceneList/delete',payload: res})
                 },
             })
+        },
+        // 查看成功信息
+        syncresult(id){
+            dispatch({ type: 'SceneList/syncresult', payload: {id} });
+        },
+        // 更新
+        sync(id){
+            dispatch({ type: 'SceneList/sync', payload: {id} });
         }
     };
 

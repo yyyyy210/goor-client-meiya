@@ -1,5 +1,5 @@
 import { message } from 'antd'
-import { QUERY, POST, ROBOTLIST, POINT, DELETE } from './service';
+import { QUERY, POST, ROBOTLIST, POINT, DELETE, SYNC, SYNCRESULT } from './service';
 
 export default {
 	namespace: 'SceneList',
@@ -45,6 +45,12 @@ export default {
 			const res = yield call(POINT);
 			yield put({ type: 'setPoint', payload: { pointCascade: res.data } });
 		},
+		*syncresult({ payload }, { call, put }) {
+			const res = yield call(SYNCRESULT, payload.id);
+		},
+		*sync({ payload }, { call, put }) {
+			const res = yield call(SYNC, payload.id);
+		}
 	},
 	reducers: {
 		save(state, { payload: { data } }) {

@@ -3,14 +3,14 @@ import { Icon, Tooltip, Tag, Button } from 'antd'
 import { DataTable } from 'Components'
 import { UPDATE, DELETE } from 'Utils/options'
 
-const sceneType = [
-    { icon: '', name: '正在上传', loading: true, class: {} },
-    { icon: 'primary', name: '成功', loading: false, class: {} },
-    { icon: 'aRed', name: '失败', loading: false, class: {} },
-    { icon: 'danger', name: '更新', loading: false, class: { color: '#FF8C00', border: '#FF8C00 1px solid' } },
-];//0 1 2 3
+function List({ data, loading, onEdit, onDelete, syncresult, sync }) {
+    const sceneType = [
+        { icon: '', name: '正在上传', loading: true, class: {} },
+        { icon: 'primary', name: '成功', loading: false, class: {}, on:syncresult },
+        { icon: 'aRed', name: '失败', loading: false, class: {}},
+        { icon: 'danger', name: '更新', loading: false, class: { color: '#FF8C00', border: '#FF8C00 1px solid' }, on:sync },
+    ];//0 1 2 3
 
-function List({ data, loading, onEdit, onDelete }) {
     //操作事件
     const handleMenuClick = (key, record) => {
         return {
@@ -27,7 +27,7 @@ function List({ data, loading, onEdit, onDelete }) {
             title: '机器人', dataIndex: 'robots',
             render: (text, record) => {
                 return (<div>
-                    {text.map((text, index) => <Tag color="#108ee9" key={text.id} >{text.name}</Tag>)}
+                    {text.map((text, index) => <Tag color="#ADB7D4" key={text.id} >{text.name}</Tag>)}
                 </div>);
             }
         },
@@ -35,8 +35,12 @@ function List({ data, loading, onEdit, onDelete }) {
         {
             title: '状态', dataIndex: 'state',
             render: (text, record) => {
-                const t = sceneType[text]
-                return <Button type={t.icon} style={t.class}>{t.name}</Button>;
+                const t = sceneType[text];
+                if(t.on) {
+                    return <Button type={t.icon} style={t.class} onClick={()=>{t.on(record.id)}}>{t.name}</Button>;
+                }else{
+                    return <Button type={t.icon} style={t.class}>{t.name}</Button>;
+                }
             }
         },
         {
@@ -63,7 +67,9 @@ function List({ data, loading, onEdit, onDelete }) {
 List.propTypes = {
     data: PropTypes.object.isRequired,
     onEdit: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
+    onDelete: PropTypes.func.isRequired,
+    syncresult: PropTypes.func.isRequired,
+    sync: PropTypes.func.isRequired,
 }
 
 export default List
