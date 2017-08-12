@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react'
-import { Icon, Tooltip, Tag, Button } from 'antd'
+import { Icon, Tooltip, Tag, Button, Popover } from 'antd'
 import { DataTable } from 'Components'
 import { UPDATE, DELETE } from 'Utils/options'
 
-function List({ data, loading, onEdit, onDelete, syncresult, sync }) {
+function List({ data, loading, onEdit, onDelete, sync }) {
+    
     const sceneType = [
         { icon: '', name: '正在上传', loading: true, class: {} },
-        { icon: 'primary', name: '成功', loading: false, class: {}, on:syncresult },
-        { icon: 'aRed', name: '失败', loading: false, class: {}},
-        { icon: 'danger', name: '更新', loading: false, class: { color: '#FF8C00', border: '#FF8C00 1px solid' }, on:sync },
+        { icon: 'primary', name: '成功', loading: false, class: {}},
+        { icon: 'aRed', name: '失败', loading: false, class: {} },
+        { icon: 'danger', name: '更新', loading: false, class: { color: '#FF8C00', border: '#FF8C00 1px solid' }, on: sync },
     ];//0 1 2 3
 
     //操作事件
@@ -36,9 +37,23 @@ function List({ data, loading, onEdit, onDelete, syncresult, sync }) {
             title: '状态', dataIndex: 'state',
             render: (text, record) => {
                 const t = sceneType[text];
-                if(t.on) {
-                    return <Button type={t.icon} style={t.class} onClick={()=>{t.on(record.id)}}>{t.name}</Button>;
-                }else{
+                if (t.icon === 'danger') {
+                    return (
+                        <Button type={t.icon} style={t.class} onClick={() => { t.on(record.id)}}>{t.name}</Button>
+                    );
+                }else if (t.icon === 'primary'){
+                    const mapSyncResult = record.mapSyncResult.split(',');
+                    let mapSyncResultArr = (
+                        <div>
+                            {mapSyncResult.map((t, index) => <p key={index}>{t}</p>)}
+                        </div>
+                    );
+                    return (
+                        <Popover placement="topLeft" title='详情' content={mapSyncResultArr}>
+                            <Button type={t.icon} style={t.class}>{t.name}</Button>
+                        </Popover>
+                    )
+                }else {
                     return <Button type={t.icon} style={t.class}>{t.name}</Button>;
                 }
             }
@@ -68,7 +83,6 @@ List.propTypes = {
     data: PropTypes.object.isRequired,
     onEdit: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
-    syncresult: PropTypes.func.isRequired,
     sync: PropTypes.func.isRequired,
 }
 

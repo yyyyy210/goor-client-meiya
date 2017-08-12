@@ -16,8 +16,8 @@ function List({data,loading,onEdit,onDelete,pointType}) {
     const columns = [
         {title: '导航点名称',dataIndex: 'point_name'},
         {title: '导航点别名',dataIndex: 'point_alias'},
-        {title: '场景名',dataIndex: 'scene_name'},
-        {title: '地图名',dataIndex: 'map_name'},
+        {title: '场景名称',dataIndex: 'scene_name'},
+        {title: '地图名称',dataIndex: 'map_name'},
         {title: '坐标x',dataIndex: 'x'},
         {title: '坐标y',dataIndex: 'y'},
         {title: '坐标旋转角度',dataIndex: 'th'},

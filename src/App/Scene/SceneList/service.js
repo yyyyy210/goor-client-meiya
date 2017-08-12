@@ -20,10 +20,6 @@ export async function POINT() {
   return request('area/point/cascade?level=1');
 }
 
-export async function SYNCRESULT(id){
-  return request(`assets/scene/syncresult/${id}`);
-}
-
 export async function SYNC(id){
   return request(`assets/scene/sync/${id}`);
 }

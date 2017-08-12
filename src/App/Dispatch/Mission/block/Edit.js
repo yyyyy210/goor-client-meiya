@@ -31,7 +31,7 @@ class Edit extends React.Component {
 			//暂时判断数据长度为2
 			if(list_[0]){
 				const list_a = list_[0].missionItemSet;
-				let mInfo = []
+				let mInfo = [];
 				list_a.map((res)=>{
 					mInfo.push({
 						id:res.id,
@@ -79,8 +79,10 @@ class Edit extends React.Component {
 				mission_list.type="导航任务";
 			}
 			if(res.featureItemId === 7){
-				mission_list.list[index].value = res.data.point_alias || res.data.point_name;
+				mission_list.list[index].value = res.data.point_alias || res.data.point.point_name;
 				mission_list.list[index].name = '充电点';
+				mission_list.list[index].timeName = '充电时长';
+				mission_list.list[index].timeValue = res.data.chargeTime;
 				mission_list.type="充电任务"
 			}
 		});
@@ -152,7 +154,7 @@ class Edit extends React.Component {
 							missionItemSet.push(
 								{
 									name:"等待",
-									data:`{"waitTime":${wait.intervalTime}}`,
+									data:`{"waitTime":${wait.intervalTime/1000}}`,
 									featureItemId:6
 								}
 							)
@@ -180,7 +182,7 @@ class Edit extends React.Component {
 							missionItemSet.push(
 								{
 									name:"充电",
-									data:`{"chargeTime":${nav.intervalTime},"point":{"id":${nav.point2[3]}}}`,
+									data:`{"chargeTime":${nav.intervalTime/1000},"point":{"id":${nav.point2[3]}}}`,
 									featureItemId:7
 								}
 							)
@@ -295,7 +297,10 @@ class Edit extends React.Component {
 												{
 													res.list.map((t, index2)=>{
 														return (
-															<p key={index2}><span>{t.name}:</span>{t.value}</p>
+															<p key={index2}>
+																<span>{t.name}：{t.value}</span><br />
+																<span>{t.timeName}：{t.timeValue}</span>
+															</p>
 														)
 													})
 												}

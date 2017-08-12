@@ -50,10 +50,10 @@ function Edit({item,onOk,onCancel,pointType,form: {getFieldDecorator,validateFie
                         </Select>
                     )}
                 </FormItem>
-                <FormItem label="场景名" {...formItemLayout}>
+                <FormItem label="场景名称" {...formItemLayout}>
                     {item.scene_name}
                 </FormItem>
-                <FormItem label="地图名" {...formItemLayout}>
+                <FormItem label="地图名称" {...formItemLayout}>
                     {item.map_name}
                 </FormItem>
                 <FormItem label="坐标x" {...formItemLayout}>

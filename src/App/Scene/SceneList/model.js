@@ -1,5 +1,5 @@
 import { message } from 'antd'
-import { QUERY, POST, ROBOTLIST, POINT, DELETE, SYNC, SYNCRESULT } from './service';
+import { QUERY, POST, ROBOTLIST, POINT, DELETE, SYNC } from './service';
 
 export default {
 	namespace: 'SceneList',
@@ -9,6 +9,7 @@ export default {
 		Visible: false,
 		robotlist: [],
 		pointCascade: [],
+		syncresultData:[]
 	},
 	subscriptions: {
 		setup({ dispatch, history }) {
@@ -45,9 +46,6 @@ export default {
 			const res = yield call(POINT);
 			yield put({ type: 'setPoint', payload: { pointCascade: res.data } });
 		},
-		*syncresult({ payload }, { call, put }) {
-			const res = yield call(SYNCRESULT, payload.id);
-		},
 		*sync({ payload }, { call, put }) {
 			const res = yield call(SYNC, payload.id);
 		}
@@ -64,6 +62,6 @@ export default {
 		},
 		setPoint(state, { payload: { pointCascade } }) {
 			return { ...state, pointCascade };
-		},
+		}
 	}
 }
