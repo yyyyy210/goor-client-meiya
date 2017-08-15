@@ -32,7 +32,7 @@ function Edit({item,onOk,onCancel,pointType,form: {getFieldDecorator,validateFie
                 <FormItem label="导航点别名" {...formItemLayout}>
                     {getFieldDecorator('point_alias', {
                         initialValue: item.point_alias,
-                        rules: [{required: true,message: '导航点别名未填写'}],
+                        rules: [{required: true,message: '导航点别名未填写'}, {max:15, message:'导航点别名太长'},{pattern: /^[^ ]*$/ , message: '导航点别名不能有空格' }],
                     })(<Input />)}
                 </FormItem>
                 <FormItem label="云端点类型" {...formItemLayout}>

@@ -15,14 +15,18 @@ function List({data,loading,onEdit,onDelete,pointType}) {
     //table配置
     const columns = [
         {title: '导航点名称',dataIndex: 'point_name'},
-        {title: '导航点别名',dataIndex: 'point_alias'},
+        {title: '导航点别名',dataIndex: 'point_alias', width:250},
         {title: '场景名称',dataIndex: 'scene_name'},
         {title: '地图名称',dataIndex: 'map_name'},
         {title: '坐标x',dataIndex: 'x'},
         {title: '坐标y',dataIndex: 'y'},
         {title: '坐标旋转角度',dataIndex: 'th'},
         {title: '云端点类型',dataIndex: 'cloud_point_type',render: (text,record) => {
-            return <span>{text>0?pointType[text].value:''}</span>
+            try {
+                return <span>{pointType[text].value}</span>   
+            } catch (error) {
+                return <span>未知类型</span>
+            }
         }},
         {title: '工控点类型',dataIndex: 'ic_point_type'},
         {

@@ -13,14 +13,15 @@ function List({ data, loading, onUpdata }) {
 
     // table配置
   const columns = [
-    { title: '地图名称', dataIndex: 'mapName' },
-    { title: '地图别名', dataIndex: 'mapAlias' },
-    { title: '地图楼层', dataIndex: 'floor' },
-    { title: '地图场景', dataIndex: 'sceneName' },
+    { title: '地图名称', dataIndex: 'mapName' ,width:120},
+    { title: '地图别名', dataIndex: 'mapAlias' ,width:250},
+    { title: '地图楼层', dataIndex: 'floor' ,width:80},
+    { title: '地图场景', dataIndex: 'sceneName' ,width:100},
     { title: '文件存放路径', dataIndex: 'pngImageLocalPath' },
     { title: '设计图', dataIndex: 'pngDesigned' },
     { title: '操作',
       dataIndex: 'createDate',
+      width:80,
       render: (text, record) => {
         return (
           <ul>

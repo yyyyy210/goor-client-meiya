@@ -21,24 +21,24 @@ module.exports = [
       },
       {
         key: 'point',
-        name: '导航目标点管理',
+        name: '导航点',
       }
     ],
   },
-  // {
-  //   key:'log',
-  //   name:'日志管理',
-  //   icon: 'ticket',
-  //   clickable: false,
-  //   child: [
-  //     {
-  //       key: 'map',
-  //       name: '地图包',
-  //     },
-  //     {
-  //       key: 'warning',
-  //       name: '故障日志',
-  //     },
-  //   ],
-  // }
+  {
+    key:'log',
+    name:'日志管理',
+    icon: 'ticket',
+    clickable: false,
+    child: [
+      {
+        key: 'map',
+        name: '地图包',
+      },
+      // {
+      //   key: 'warning',
+      //   name: '故障',
+      // },
+    ],
+  }
 ];

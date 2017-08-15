@@ -45,8 +45,8 @@
 .ant-menu-submenu-inline > .ant-menu-submenu-title:after {content: "\e637";}
 .ant-select-arrow:before, .anticon-down:before, .ant-modal-content .ant-time-picker-icon:after {content: "\e637";}
 .anticon-frown-o:before  {content: "\e62b";}
-.main .ant-pagination-prev a:after {content: "\e61a";}
-.main .ant-pagination-next a:after {content: "\e624"}
+#root .ant-pagination-prev a:after {content: "\e61a";}
+#root .ant-pagination-next a:after {content: "\e624"}
 .ant-cascader-menus .ant-cascader-menu-item-expand:after {content: "\e624";}
 .ant-modal-close-x:before,.anticon-cross-circle::before {content: "\e617";}
 .anticon-check-circle:before {content: "\e62f";}
@@ -459,4 +459,8 @@
   .ant-radio-inner:after {width: 9px; height: 9px; border-radius: 100%}
   .ant-checkbox-checked .ant-checkbox-inner:after {width: 6px; height: 10px;}
   .ant-btn {height: 36px;}
+}
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.4);
 }

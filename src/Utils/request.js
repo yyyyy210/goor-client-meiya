@@ -29,11 +29,11 @@ export default async function request(url, options = {}) {
 	const { token } = await loginState.getUser('userInfo') || '';
 
 	// 暂get带token
-	if (url.indexOf('?') >= 0) {
-		url += `&access_token=${token}`;
-	} else {
-		url != 'account/user/login' && (url += `?access_token=${token}`);
-	}
+	// if (url.indexOf('?') >= 0) {
+	// 	url += `&access_token=${token}`;
+	// } else {
+	// 	url != 'account/user/login' && (url += `?access_token=${token}`);
+	// }
 	options.credentials = 'include';
 	//带上token
 	// options.headers = {
@@ -63,7 +63,7 @@ export default async function request(url, options = {}) {
 	} else if (res.code === 40002 || res.code === 40001) {
 		// 登录失效简化处理
 		loginState.removeUser('userInfo')
-		window.location.href = '#login';
+		window.location.href = '/login';
 	} else {
 		message.error(res.message)
 		//return res;

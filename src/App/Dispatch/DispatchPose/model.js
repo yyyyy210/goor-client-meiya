@@ -27,6 +27,7 @@ export default {
 			if(res.code === 0){
 				yield put({ type: 'query', payload: {} })
 				yield put({ type: 'VisibleEdit', payload: { Visible: 'list' } });
+				yield put({ type: 'BricsDispatch/VisibleEdit', payload: { Visible: 'list' } });
 			}
 		},
 		*missionList({ payload }, { call, put }) {

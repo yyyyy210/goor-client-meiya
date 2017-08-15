@@ -16,7 +16,7 @@ function List({ data, loading, onEdit, onDetail, robotType }) {
   const columns = [
     { title: '机器编号', dataIndex: 'code' },
     { title: '场景名称', dataIndex: 'sceneName' },
-    { title: '机器名称', dataIndex: 'name' },
+    { title: '机器别名', dataIndex: 'name' , width:320},
     {
       title: '低电量阈值',
       dataIndex: 'lowBatteryThreshold',
@@ -57,7 +57,7 @@ function List({ data, loading, onEdit, onDetail, robotType }) {
     //         return <span>{text ? robotType[text - 1].name : '未定义'}</span>
     //     }
     // },
-    { title: '备注', dataIndex: 'description' },
+    // { title: '备注', dataIndex: 'description' },
     {
       title: '操作',
       key: 'operation',

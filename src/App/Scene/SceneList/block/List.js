@@ -21,10 +21,10 @@ function List({ data, loading, onEdit, sync }) {
 
     //table配置
     const columns = [
-        { title: '场景名称', dataIndex: 'name' },
-        { title: '地图场景', dataIndex: 'mapSceneName' },
+        { title: '场景名称', dataIndex: 'name' , width:200},
+        { title: '地图场景', dataIndex: 'mapSceneName',width:120 },
         {
-            title: '机器人', dataIndex: 'robots',
+            title: '机器编号', dataIndex: 'robots', width:400,
             render: (text, record) => {
                 return (<div>
                     {text.map((text, index) => <Tag color="#ADB7D4" key={text.id} >{text.name}</Tag>)}
@@ -33,7 +33,7 @@ function List({ data, loading, onEdit, sync }) {
         },
         { title: '备注', dataIndex: 'intro' },
         {
-            title: '状态', dataIndex: 'state',
+            title: '状态', dataIndex: 'state', width:120,
             render: (text, record) => {
                 const t = sceneType[text];
                 if (t.icon === 'danger') {

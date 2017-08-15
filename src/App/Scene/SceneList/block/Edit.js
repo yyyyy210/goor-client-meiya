@@ -61,13 +61,13 @@ class Edit extends React.Component {
 				<FormItem label="场景名称" {...formItemLayout}>
 					{getFieldDecorator('name', {
 						initialValue: item.name,
-						rules: [{ required: true, message: '场景未填写' }],
+						rules: [{ required: true, message: '场景名称未填写' }, {max:15, message:'场景名称太长'},{pattern: /^[^ ]*$/ , message: '场景名称不能有空格' }],
 					})(<Input />)}
 				</FormItem>
-				<FormItem label="机器人" {...formItemLayout}>
+				<FormItem label="机器编号" {...formItemLayout}>
 					{getFieldDecorator('robots', {
 						initialValue: this.state.robots,
-						rules: [{ required: true, message: '机器人未填写' }],
+						rules: [{ required: true, message: '机器编号未选择' }],
 					})(
 						<Checkbox.Group>
 							<Row>
@@ -91,7 +91,7 @@ class Edit extends React.Component {
 				<FormItem label="地图场景" {...formItemLayout}>
 					{getFieldDecorator('mapSceneName', {
 						initialValue: item.mapSceneName,
-						rules: [{ required: true, message: '地图场景未填写' }],
+						rules: [{ required: true, message: '地图场景未选择' }],
 					})(
 						<RadioGroup>
 							<Row>
@@ -109,6 +109,7 @@ class Edit extends React.Component {
 				<FormItem label="备注" {...formItemLayout}>
 					{getFieldDecorator('intro', {
 						initialValue: item.intro || '',
+						rules: [{max:100, message:'备注太长(限制100字)'}],
 					})(<Input type="textarea" rows={6} />)}
 				</FormItem>
 			</Modal>

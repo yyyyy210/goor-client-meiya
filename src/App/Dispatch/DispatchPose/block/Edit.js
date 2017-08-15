@@ -53,6 +53,7 @@ class Edit extends React.Component {
 				missionListIds_.push(t.id)
 			});
 			req.missionListIds = missionListIds_.toString();
+			
 			onOk(req);
 		})
 	}
@@ -66,7 +67,7 @@ class Edit extends React.Component {
 				<Form layout="horizontal" onSubmit={this.handleOk}>
 					<FormItem label="调度名称" {...formItemLayout}>
 						{getFieldDecorator('name', {
-							rules: [{ required: true, message: '调度名称未填写' }],
+							rules: [{ required: true, message: '调度名称未填写' }, {max:10, message:'调度名称太长'},{pattern: /^[^ ]*$/ , message: '调度名称不能有空格' }],
 						})(<Input />)}
 					</FormItem>
 					{
@@ -178,7 +179,7 @@ class Edit extends React.Component {
 	}
 
 	render() {
-		const { onCancel, modalHide,loading } = this.props;
+		const { item, onCancel, modalHide,loading } = this.props;
 
 		//弹出框配置
 		const modalOpts = {
@@ -186,7 +187,7 @@ class Edit extends React.Component {
 			visible: true,
 			onOk: this.handleOk,
 			onCancel,
-			confirmLoading: loading,
+			confirmLoading: item.id ? loading :false,
 			width: 800,
 			wrapClassName: 'vertical-center-modal',
 		};

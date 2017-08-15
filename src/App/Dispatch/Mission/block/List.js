@@ -24,13 +24,13 @@ function List({ data, loading, onEdit, onDelete }) {
   // table配置
   const columns = [
     {
-      title: '任务类型', dataIndex: 'missionListType', render: (text, record) => {
+      title: '任务类型', dataIndex: 'missionListType', width:120 , render: (text, record) => {
         return missionListType[text]
       }
     },
-    { title: '任务名', dataIndex: 'name' },
+    { title: '任务名称', dataIndex: 'name' , width:250},
     { title: '备注', dataIndex: 'description' },
-    { title: '创建时间', dataIndex: 'createTime' },
+    { title: '创建时间', dataIndex: 'createTime', width:200 },
     {
       title: '操作',
       key: 'operation',

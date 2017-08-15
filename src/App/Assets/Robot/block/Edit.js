@@ -42,10 +42,10 @@ function Edit({ item, onOk, onCancel, robotType, pointCharger, form: { getFieldD
             {item.sceneName}
           </FormItem>
         }
-        <FormItem label="机器名称" {...formItemLayout}>
+        <FormItem label="机器别名" {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
-            rules: [{ required: true, message: '机机器名称未填写' }],
+            rules: [{ required: true, message: '机器别名未填写' }, {max:20, message:'机器别名太长'},{pattern: /^[^ ]*$/ , message: '机器别名不能有空格' }],
           })(<Input />)}
         </FormItem>
         <FormItem label="低电量阈值(%)" {...formItemLayout}>
@@ -84,6 +84,7 @@ function Edit({ item, onOk, onCancel, robotType, pointCharger, form: { getFieldD
         <FormItem label="备注" {...formItemLayout}>
           {getFieldDecorator('description', {
             initialValue: item.description || '',
+            rules: [{max:100, message:'备注太长(限制100字)'}],
           })(<Input type="textarea" rows={6} />)}
         </FormItem>
         {/* <FormItem label=" " {...formItemLayout} className="fromButton">

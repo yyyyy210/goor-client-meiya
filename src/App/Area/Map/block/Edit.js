@@ -85,7 +85,7 @@ class Edit extends React.Component {
 					<FormItem label="地图别名" {...formItemLayout}>
 						{getFieldDecorator('mapAlias', {
 							initialValue: item.mapAlias,
-							rules: [{ required: true, message: '地图别名未填写' }],
+							rules: [{ required: true, message: '地图别名未填写' }, {max:15, message:'地图别名太长'},{pattern: /^[^ ]*$/ , message: '地图别名不能有空格' }],
 						})(<Input />)}
 					</FormItem>
 					<FormItem label="楼层" {...formItemLayout}>

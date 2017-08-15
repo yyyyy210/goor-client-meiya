@@ -222,10 +222,11 @@ class Edit extends React.Component {
 		return (
 			<Modal {...modalOpts}>
 				<Form layout="horizontal" onSubmit={handleOk}>
-					<FormItem label="任务名" {...formItemLayout}>
+					<FormItem label="任务名称" {...formItemLayout}>
 						{getFieldDecorator('name', {
 							initialValue: item.name,
-							rules: [{ required: true, message: '任务名未填写' }],
+							// rules: [{ required: true, message: '任务名称未填写' }, {max:15, message:'任务名称太长'},{pattern: /^\s*$/ , message: 'gsdgsdg' }],
+							rules: [{ required: true, message: '任务名称未填写' }, {max:15, message:'任务名称太长'},{pattern: /^[^ ]*$/ , message: '任务名称不能有空格' }],
 						})(<Input disabled={item.name ? true : false} />)}
 					</FormItem>
 					<FormItem label="任务类型" {...formItemLayout}>
@@ -299,7 +300,7 @@ class Edit extends React.Component {
 														return (
 															<p key={index2}>
 																<span>{t.name}：{t.value}</span><br />
-																<span>{t.timeName}：{t.timeValue}</span>
+																<span>{t.timeName}：{t.timeValue}/秒</span>
 															</p>
 														)
 													})
@@ -333,6 +334,7 @@ class Edit extends React.Component {
 					<FormItem label="备注" {...formItemLayout}>
 						{getFieldDecorator('description', {
 							initialValue: item.description || '',
+							rules: [{max:100, message:'备注太长(限制100字)'}],
 						})(<Input type="textarea" rows={4} disabled={item.id ? true : false}/>)}
 					</FormItem>
 				</Form>

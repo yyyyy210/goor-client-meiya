@@ -1,6 +1,8 @@
 import { message } from 'antd'
 import { QUERY, POST, ROBOTLIST, POINT, DELETE, SYNC } from './service';
 
+let payload_ = {};
+
 export default {
 	namespace: 'SceneList',
 	state: {
@@ -22,6 +24,7 @@ export default {
 	},
 	effects: {
 		*query({ payload }, { call, put }) {
+			payload_ = payload;
 			const res = yield call(QUERY, payload);
 			yield put({ type: 'save', payload: { data: res.data } });
 		},
@@ -29,7 +32,7 @@ export default {
 			const res = yield call(POST, payload);
 
 			message.success(res.message);
-			yield put({ type: 'query', payload: {} });
+			yield put({type: 'query',payload:payload_});
 			yield put({ type: 'VisibleEdit', payload: { Visible: 'list' } });
 		},
 		*delete({ payload }, { call, put }) {

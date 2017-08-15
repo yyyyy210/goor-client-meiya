@@ -20,7 +20,7 @@ function List({ data, loading, overDispatch }) {
 
 	// table配置
 	const columns = [
-		{ title: '调度名称', dataIndex: 'name' },
+		{ title: '调度名称', dataIndex: 'name', width:300 },
 		{ title: '机器人编号', dataIndex: 'robotCode'},
 		{ title: '重复次数', dataIndex: 'repeatTimes' },
 		{
@@ -37,7 +37,7 @@ function List({ data, loading, overDispatch }) {
 		{ title: '创建时间', dataIndex: 'createTime' },
 		{
 			title: '状态', dataIndex: 'state', render: (text, record) => {
-				return <span>{text || '未执行'}</span>
+				return <span>{text || 'waiting'}</span>
 			}
 		},
 		{
@@ -51,7 +51,7 @@ function List({ data, loading, overDispatch }) {
 						{
 							(record.state === null || record.state === 'init')
 							&&
-							<Button type="aYellow" style={{fontSize:13,height:30,lineHeight:'30px'}} onClick={() => handleMenuClick(UPDATE, record)}>终止任务</Button>
+							<Button type="aYellow" style={{fontSize:13,height:30,lineHeight:'30px'}} onClick={() => handleMenuClick(UPDATE, record)}>取消任务</Button>
 						}
 					</span>
 				);
